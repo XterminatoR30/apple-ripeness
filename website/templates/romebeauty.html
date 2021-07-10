@@ -1,0 +1,26 @@
+{%extends "base3.html"%}
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/rome.css') }}">
+    <title>{%block title%}Kematangan Apel Rome Beauty{%endblock%}</title>
+</head>
+{%block content%}
+<body>
+    <h3 style="text-align:center">Prediksi Kematangan Apel Rome Beauty</h3>
+    <br>
+    <form method="POST" action="{{url_for('views.predict')}}" enctype="multipart/form-data">
+        <input type="file" name='imagefile' class='btn' style="margin:0px auto; display:block;"><br><br><br>
+        <div class="row checkbox-row">
+            <div class="col-sm-12">
+              <div class="checkbox-inline" style="text-align:center">
+                <label class="checkbox-inline">
+                  <input type="checkbox" value="Romebeauty" name="romebeauty" class="Predict">Romebeauty</label>
+              </div>
+            </div>
+        </div>
+        <input type="submit" value="Predict" class='btn' style="margin:0px auto; display:block;">
+    </form>
+</body>
+<footer class="container">
+    <p style="text-align:center">&copy; 2021 Kevin Cliff Gunawan &middot; </p>
+</footer>
+{%endblock%}

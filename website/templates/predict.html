@@ -1,0 +1,35 @@
+{%extends "base3.html"%}
+{%block title%}Prediksi Kematangan Romebeauty{%endblock%}
+{%block content%}
+<p>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+</p>
+<body>
+    <h2 style="text-align:center;">Apel Romebeauty Prediction Result</h2>
+    <div class='cont'>
+        {%if classes=="Mentah"%}
+          <h5 style="text-align:center;">Mentah</h5>
+        {%elif classes=="Mengkal(Setengah Matang)"%}
+          <h5 style="text-align:center;">Mengkal(Setengah Matang)</h5>
+        {%elif classes=="Matang"%}
+          <h5 style="text-align:center;">Matang</h5>
+        {%else%}
+          <h5 style="text-align:center;">Tidak Terdeteksi</h5>
+        {%endif%}
+      </div>
+  <br>
+  <img class="center" src="{{url_for('views.display',filename=filename)}}" alt='img' width='224' height='224'>
+  <a href="/romebeauty" class='btn' style="margin:0px auto; display:block;">Go Back</a>
+</body>
+<footer class="container">
+    <p style="text-align:center">&copy; 2021 Kevin Cliff Gunawan &middot; </p>
+</footer>
+{%endblock%}

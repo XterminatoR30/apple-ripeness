@@ -1,0 +1,45 @@
+{%extends "base2.html"%}
+{%block title%}
+Login Page
+{%endblock%}
+{%block content%}
+<div class="column is-4 is-offset-4">
+  <h3 style="text-align:center;" class="title">Login</h3>
+  <div class="box">
+    <form method="POST">
+      <div class="field">
+        <div class="control">
+          <input
+            type="text"
+            class="input is-large"
+            id="username"
+            name="username"
+            placeholder="Username"
+          />
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <input
+            type="password"
+            class="input is-large"
+            id="password"
+            name="password"
+            placeholder="Password"
+          />
+        </div>
+      </div>
+      <br />
+    <div class="field">
+      <label class="checkbox">
+          <input type="checkbox">
+          Remember me
+      </label>
+  </div>
+    <button type="submit" class="button is-block is-info is-large is-fullwidth">Submit</button>
+  </form>
+</div>
+<footer class="container">
+  <p style="text-align:center">&copy; 2021 Kevin Cliff Gunawan &middot; </p>
+</footer>
+{%endblock%}

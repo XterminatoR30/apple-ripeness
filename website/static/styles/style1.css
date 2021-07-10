@@ -1,0 +1,63 @@
+.jumbotron {
+    background-size: cover;
+    height: 770px;
+    text-align: center;
+    margin-top: -120 px;
+}
+.jumbotron .display-4{
+    color: white;
+    margin-top: 200px;
+}
+
+.jumbotron p{
+    color: white;
+    margin-top: 200px;
+}
+
+.jumbotron hr{
+    border-color: #F05F40;
+    width: 70px;
+    border-width: 3px;
+}
+
+.jumbotron .btn{
+    background-color: deepskyblue;
+    border: none;
+    border-radius: 25px;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-top: 40px;
+}
+
+.carousel-item{
+    background-size: cover;
+    height:700px; 
+}
+
+.carousel-item img {
+    margin-top: -120px; 
+}
+
+.carousel-item .display-4{
+    margin-top: -440px;
+}
+
+.carousel-item hr{
+    width: 70px;
+}
+
+.carousel-item .btn{
+    background-color: #0b65eb;
+    border: none;
+    border-radius: 25px;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-top: 40px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }

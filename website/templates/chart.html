@@ -1,0 +1,140 @@
+{% extends 'base3.html' %}
+{% block content %}
+<div class="col-xs-10 col-sm-6 col-md-6">
+    <div class="card card-style mb-2">
+        <div class="card-body">
+            <div class="chart-container" style="position: relative;">
+                <canvas id="mana_vs_rome"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-10 col-sm-6 col-md-6">
+    <div class="card card-style mb-2">
+        <div class="card-body">
+            <div class="chart-container" style="position: relative;">
+                <canvas id="matang_mengkal_mentah"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-10 col-sm-6 col-md-6">
+    <div class="card card-style mb-2">
+        <div class="card-body">
+            <div class="chart-container" style="position: relative;">
+                <canvas id="apelperhari"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block javascript %}
+<script>
+    let mana_vs_rome_data = JSON.parse({{ mana_vs_rome | tojson }})
+    let matang_mengkal_mentah_data= JSON.parse({{ matang_mengkal_mentah | tojson}})
+    
+    Chart.scaleService.updateScaleDefaults('linear', {
+            ticks: {
+                min: 0
+            }
+    });
+
+
+    let mana_vs_rome_chart = new Chart(mana_vs_rome, {
+            type: 'pie',
+            data: {
+            labels: ['Manalagi', 'Romebeauty'],
+                datasets: [{
+                    label: "Manalagi vs Romebeauty",
+                    data: mana_vs_rome_data,
+                    backgroundColor: ['#5DA5DA ', '#FAA43A', '#60BD68',
+                        '#B276B2', '#E16851', '#FB8267'],
+
+                    borderWidth: 1,
+                    hoverBorderColor: "black",
+                    hoverBorderWidth: 2,
+                    hoverBackgroundColor: 'rgba(154, 245, 140)',
+                    pointHoverRadius: 5
+                }],
+            },
+            options: {
+                    title: {
+                        display: true,
+                            text: "Manalagi vs Romebeauty",
+                                fontSize: 20,
+                    },
+                    legend: {
+                        position: "right",
+                            labels: {
+                            fontColor: "gray"
+                        },
+                        display: true,
+                    },
+
+                    elements: {
+                        hitRadius: 3,
+                    }
+            }
+        })
+
+    let matang_mengkal_mentah_chart = new Chart(matang_mengkal_mentah, {
+        type: 'bar',
+        data: {
+            labels: ['Matang', 'Mengkal', 'Mentah'],
+            datasets: [{
+                label: "Tingkat Kematangan Apel",
+                data: matang_mengkal_mentah_data,
+        backgroundColor: ['#5DA5DA ', '#FAA43A', '#60BD68',
+            '#B276B2', '#E16851', '#FB8267'],
+        borderWidth: 1,
+        hoverBorderColor: "black",
+        hoverBorderWidth: 2,
+        hoverBackgroundColor: 'rgba(154, 245, 140)',
+        pointHoverRadius: 5
+    }],
+        },
+    options: {
+            title: {
+                display: true,
+                    text: "Jumlah Hasil Prediksi Tingkat Kematangan Apel",
+                        fontSize: 20,
+        },
+            legend: {
+                position: "right",
+                    labels: {
+                    fontColor: "gray"
+                },
+                display: true,
+        },
+
+            elements: {
+                hitRadius: 3,
+        }
+        }
+    })
+
+        apelperhari = JSON.parse({{apelperhari | tojson}})
+        labels = JSON.parse({{ dates_label  | tojson}})
+
+        new Chart(document.getElementById("apelperhari"), {
+                type: "line",
+                data:
+                {
+                    labels: labels,
+                    datasets: [{
+                        label: "Jumlah Apel Diprediksi Setiap Hari",
+                        
+                        data: apelperhari,
+                        fill: false,
+                        borderColor: "rgb(75, 192, 192)",
+                        lineTension: 0.1
+                    }]
+                },
+                options: {}
+            });
+</script>
+{% endblock%}
+
+{% endblock %}
